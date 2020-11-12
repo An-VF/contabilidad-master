@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Detall entrades i sortides</h4>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descripció</th>
+                            <th>Quantitat</th>
+                            <th>Tipus</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let item of entradesSortides">
+
+                            <td> {{ item.descripcio}} </td>
+                            <td> {{ item.quantitat | currency:'EUR':true:'1.2-2' }} </td>
+                            <td [class.text-success]="item.tipus === 'ingres' " [class.text-danger]="item.tipus === 'despesa' ">
+                                {{ item.tipus }}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)='borrar(item.uid)'>
+                                    Eliminar
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
